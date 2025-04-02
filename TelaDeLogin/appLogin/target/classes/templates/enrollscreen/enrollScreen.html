@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styleenrollscreen.css">
+    <title>Matrícula</title>
+</head>
+<body>
+    <div class="main-enroll">
+        <div class="card-enroll">
+            <h2>Escolha suas matérias</h2>
+            <form action="/matricula" method="POST">
+                
+                <select class="matterIds" name="matterIds" id="matter">
+                    <option value="" disabled selected>Selecione uma matéria</option>
+                    <option th:each="matter : ${matters}" th:value="${matter.id}" th:text="${matter.nomeMateria}"></option>
+                </select>
+
+                <select class="matterIds" name="matterIds" id="matter">
+                    <option value="" disabled selected>Selecione uma matéria</option>
+                    <option th:each="matter : ${matters}" th:value="${matter.id}" th:text="${matter.nomeMateria}"></option>
+                </select>
+
+                <select class="matterIds"  name="matterIds" id="matter">
+                    <option value="" disabled selected>Selecione uma matéria</option>
+                    <option th:each="matter : ${matters}" th:value="${matter.id}" th:text="${matter.nomeMateria}"></option>
+                </select>
+
+                <select class="matterIds" name="matterIds" id="matter">
+                    <option value="" disabled selected>Selecione uma matéria</option>
+                    <option th:each="matter : ${matters}" th:value="${matter.id}" th:text="${matter.nomeMateria}"></option>
+                </select>
+
+                <select class="matterIds" name="matterIds" id="matter">
+                    <option value="" disabled selected>Selecione uma matéria</option>
+                    <option th:each="matter : ${matters}" th:value="${matter.id}" th:text="${matter.nomeMateria}"></option>
+                </select>
+
+                <button type="submit" class="enroll-button">Confirmar matrícula</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            function atualizarOpcoes() {
+                const selects = document.querySelectorAll(".matterIds");
+                let selecionadas = new Set();
+
+                // Coletar todas as matérias selecionadas
+                selects.forEach(select => {
+                    if (select.value) {
+                        selecionadas.add(select.value);
+                    }
+                });
+
+                // Atualizar opções disponíveis
+                selects.forEach(select => {
+                    const opcoes = select.querySelectorAll("option");
+                    opcoes.forEach(option => {
+                        if (option.value && selecionadas.has(option.value) && option.value !== select.value) {
+                            option.hidden = true; // Oculta opção se já estiver selecionada
+                        } else {
+                            option.hidden = false; // Exibe se não estiver selecionada
+                        }
+                    });
+                });
+            }
+
+            // Adicionar evento de mudança a todos os selects
+            document.querySelectorAll(".matterIds").forEach(select => {
+                select.addEventListener("change", atualizarOpcoes);
+            });
+        });
+    </script>
+
+</body>
+</html>

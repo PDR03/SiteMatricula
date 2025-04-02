@@ -1,0 +1,52 @@
+body{
+    margin: 0;
+}
+
+.main-home-screen{
+    width: 100vw;
+    height: 100vh;
+    background-color: #273973;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.left-side{
+    width: 50vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 100px;
+}
+
+.right-side {
+    width: 50vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 100px;
+}
+
+.btn-aluno, .btn-gestor{
+    width: 100%;
+    padding: 50px 100px;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 3px;
+    cursor: pointer;
+    box-shadow: 0px 10px 40px -12px #3c57ae;
+    background-color: white;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+/* Quando o mouse passar por cima */
+.btn-aluno:hover, .btn-gestor:hover {
+    transform: scale(1.1); /* Aumenta o botão */
+}

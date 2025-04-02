@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styleregisterstudentscreen.css">
+    <title>Register</title>
+ 
+</head>
+<body>
+    <div class="main-register"> 
+        <div class="title-register">
+            <h1>Registre o novo aluno<br> preenchendo os campos abaixo</h1>
+        </div>
+        <div class="card-register">
+            <h1>Cadastre</h1>
+            <form action="/registerstudent" method="POST">
+                <div class="textfield">
+                    <label for="nome">Nome Completo</label>
+                    <input type="text" name= "nome" placeholder="Nome Completo">
+                </div>
+                <div class="textfield">
+                    <label for="E-mail">E-mail</label>
+                    <input type="email" name= "email" placeholder="E-mail">
+                </div>
+                <div class="textfield">
+                    <label for="matricula">Matricula</label>
+                    <input type="text" name= "matricula" placeholder=" Matricula do aluno">
+                </div>
+                <div class="textfield">
+                    <label for="senha">Senha</label>
+                    <input type="text" name= "senha" placeholder="Senha">
+                </div>
+                <button type="submit" class="btn-register">Registrar</button>
+            </form>
+            <a href="/registrationchoice" class="back-choicescreen">Voltar</a>
+        </div>
+    </div>
+</body>
+</html>

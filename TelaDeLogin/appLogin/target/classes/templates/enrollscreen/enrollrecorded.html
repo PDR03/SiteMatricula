@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styleenrollrecorded.css">
+    <title>Matricula Confirmada</title>
+</head>
+<body>
+    <div class="main-recorded">
+        <div class="matter-card">
+            <h2>Matérias Registradas</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID da Matéria</th>
+                        <th>Nome da Matéria</th>
+                        <th>Sala</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="matter : ${matters}">
+                        <td th:text="${matter.id}"></td>
+                        <td th:text="${matter.nomeMateria}"></td>
+                        <td th:text="${matter.sala}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/stylemanager.css">
+    <title>Login</title>
+</head>
+<body>
+    <div class="main-login">
+        <div class="left-login">
+            <h1>Bem vindo!<br> Realize seu login para continuar</h1>
+            <img src="/img/PUC-GO-logo.png" class="left-login-image" alt="education">
+        </div>
+
+        <div class="right-login">
+            <div class="card-login">
+                <h1>Login</h1>
+                <div th:if="${errorMessage}" class="error-message" id="error-message">
+                    <span th:text="${errorMessage}"></span>
+                </div> 
+                <form action="/loginscreenmanager" method="post">
+                    <div class="textfield">
+                        <label for="LoginDeRede">Login</label>
+                        <input type="text" name="loginDeRede" placeholder="Login de rede" required> 
+                    </div>
+                    <div class="textfield">
+                        <label for="senha">Senha</label>
+                        <input type="password" name="senha" placeholder="Senha" required>
+                    </div>
+                    <button type="submit" class="btn-login">Entrar</button>
+                </form>
+                <a href="/homescreen" class="back-homescreen">Voltar</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Verifica se a mensagem de erro existe
+        if (document.getElementById("error-message")) {
+            // Define o tempo em milissegundos (ex: 5000 ms = 5 segundos)
+            setTimeout(function() {
+                // Remove a mensagem após o tempo definido
+                document.getElementById("error-message").style.display = "none";
+            }, 5000);  // 5000 ms = 5 segundos
+        }
+    </script>
+</body>
+</html>
