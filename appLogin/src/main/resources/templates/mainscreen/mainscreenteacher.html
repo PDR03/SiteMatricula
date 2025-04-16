@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/stylemainscreenteacher.css">
+</head>
+    <body>
+        <div class="heading">
+          <h1>Bem vindo(a), <span th:text="${nome}"></span></h1>
+            <button onclick="openOverlay()" class="viewprofile">
+                <img src="/img/iconuser.png" alt="icone de usuario">
+            </button>
+        </div>
+        <div class="bodypage">
+            <button class="makecall">
+                Fazer chamada
+            </button >
+        </div>
+
+        <div class="overlay" id="overlay">
+            <div class="overlaycontent">
+                <p>Nome completo:<span th:text="${nome}"></span> </p>
+                 <!-- <p>Email: <span th:text="${email}"></span> </p>-->
+                <p>Login De Rede: <span th:text="${loginDeRede}"></span> </p> 
+                <a onclick="closeOverlay()">Fechar</a>
+                <p></p>
+            </div>
+        </div>
+        <script>
+            function openOverlay(){
+                document.getElementById("overlay").style.display = "flex";
+            }
+
+            function closeOverlay() {
+                document.getElementById("overlay").style.display = "none";
+            }
+        </script>      
+    </body>
+</html>

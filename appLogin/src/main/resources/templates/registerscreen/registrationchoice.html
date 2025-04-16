@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Options choices</title>
+    <link rel="stylesheet" href="/css/styleregisterchoice.css">
+</head>
+<body>
+    <div class="main-class">
+        <div class="title">
+            <span>Olá seja bem vindo! <br> O que deseja fazer hoje?</span>
+        </div>
+        <button class="btn-rgst-student" onclick="window.location.href = '/registerstudent' ">
+          <img src="/img/addchoice.png" class = "addchoice" alt="addchoice">
+            <span> adicionar aluno </span>
+        </button>
+
+        <button class="btn-rgst-manager" onclick="window.location.href = '/registermanager'">
+            <img src="/img/addchoice.png" class = "addchoice" alt="addchoice">
+            <span> adicionar gestor </span>
+        </button>
+
+        <button class="btn-rgst-teacher" onclick="window.location.href = '/registerteacher'">
+            <img src="/img/addchoice.png" class = "addchoice" alt="addchoice">
+            <span> adicionar professor </span>
+        </button>
+
+        <button class="btn-rgst-matter"><!--registrar matéria-->
+            <img src="/img/addchoice.png" class = "addchoice" alt="addchoice">
+            <span> adicionar matéria </span>
+        </button>
+        <button class="btn-rgst-classroom" ><!--registar sala-->
+            <img src="/img/addchoice.png" class = "addchoice" alt="addchoice">
+            <span> adicionar sala </span>
+        </button>
+
+        <button class="btn-rmv-student" onclick="showOverlayStudent()">
+            <img src="/img/removechoice.png" class = "removechoice" alt="removechoice">
+            <span> remover aluno </span>
+        </button>
+
+        <button class="btn-rmv-manager" onclick="showOverlayManager()">
+            <img src="/img/removechoice.png" class = "removechoice" alt="removechoice">
+            <span> remover gestor </span>
+        </button>
+        <button class="btn-rmv-teacher" onclick="showOverlayTeacher()">
+            <img src="/img/removechoice.png" class = "removechoice" alt="removechoice">
+            <span> remover professor </span>
+    </div>
+    <!-- Overlay do Estudante-->
+    <div class="overlay" id="overlayStudent"> 
+        <div class="overlay-card">
+            <h2>Digite a matricula do aluno que deseja remover:</h2>
+            <form method="POST" action="/registrationchoice/confirmStudent">
+                <label for="matricula">Matricula do aluno:</label>
+                <input type="text" name= "matricula" placeholder=" Matrícula do aluno">
+                <label>Digite sua senha:</label>
+                <input type="password" name="senha" placeholder="senha">
+                <button class="button-confirm">Confirmar</button>
+                <label>
+            </form>
+                    <input type="checkbox" class="terms-checkbox" id="termsOfDeleteUser">
+                    Tenho certeza que desejo realizar essa ação.
+                </label>
+            
+            <a onclick="closeOverlayStudent()">Voltar</a>
+        </div>
+
+    </div>
+     <!-- Overlay do Manager-->
+     <div class="overlay" id="overlayManager"> 
+        <div class="overlay-card">
+            <h2>Digite o Login De Rede do Gestor que deseja remover:</h2>
+            <form method="post" action="/registrationchoice/confirmManager">
+                <label for="loginDeRede">Login de rede:</label>
+                <input type="text" name= "LoginDeRede" placeholder=" Login de Rede">
+                <label>Digite sua senha:</label>
+                <input type="password" name="senha" placeholder="senha">
+                <button class="button-confirm">Confirmar</button>
+                <label>
+            </form>
+                <input type="checkbox" class="terms-checkbox" id="termsOfDeleteUser">
+                Tenho certeza que desejo realizar essa ação.
+            </label>
+            <a onclick="closeOverlayManager()">Voltar</a>
+        </div>
+
+    </div>
+    <!-- Overlay do Teacher-->
+
+    <div class="overlay" id="overlayTeacher"> 
+        <div class="overlay-card">
+            <h2>Digite o codigo de login do professor que deseja remover:</h2>
+            <form method="post" action="/registrationchoice/confirmTeacher">
+                <label for="matricula">Código de acesso:</label>
+                <input type="text" name= "codigoDeAcesso" placeholder="Cóigo de acesso">
+                <label>Digite sua senha:</label>
+                <input type="password" name="senha" placeholder="senha">
+                <button class="button-confirm">Confirmar</button>
+                <label>
+                    <input type="checkbox" class="terms-checkbox" id="termsOfDeleteUser">
+                    Tenho certeza que desejo realizar essa ação.
+                </label>
+            </form>
+            <a onclick="closeOverlayTeacher()">Voltar</a>
+        </div>
+
+    </div>
+
+    <script>
+
+
+        //estudante
+
+        // Função para mostrar o overlay do estudante
+        function showOverlayStudent() {
+            document.getElementById('overlayStudent').style.display = 'flex'; // Mostra o overlay
+            document.getElementById('mainScreen').classList.add('blurred'); // Aplica o blur na tela principal
+        }
+
+        // Função para fechar o overlay do estudante
+        function closeOverlayStudent() {
+            document.getElementById('overlayStudent').style.display = 'none'; // Esconde o overlay
+            document.getElementById('mainScreen').classList.remove('blurred'); // Remove o blur da tela principal
+        }
+
+
+        //manager
+
+             // Função para mostrar o overlay do estudante
+        function showOverlayManager() {
+            document.getElementById('overlayManager').style.display = 'flex'; // Mostra o overlay
+            document.getElementById('mainScreen').classList.add('blurred'); // Aplica o blur na tela principal
+        }
+
+        // Função para fechar o overlay do estudante
+        function closeOverlayManager() {
+            document.getElementById('overlayManager').style.display = 'none'; // Esconde o overlay
+            document.getElementById('mainScreen').classList.remove('blurred'); // Remove o blur da tela principal
+        }
+
+        //professor
+
+        // Função para mostrar o overlay do estudante
+        function showOverlayTeacher() {
+            document.getElementById('overlayTeacher').style.display = 'flex'; // Mostra o overlay
+            document.getElementById('mainScreen').classList.add('blurred'); // Aplica o blur na tela principal
+        }
+
+        // Função para fechar o overlay do estudante
+        function closeOverlayTeacher() {
+            document.getElementById('overlayTeacher').style.display = 'none'; // Esconde o overlay
+            document.getElementById('mainScreen').classList.remove('blurred'); // Remove o blur da tela principal
+        }
+
+        //Termos de uso 
+        document.getElementById('termsOfDeleteUser').addEventListener('change', function() {
+            if (this.checked) {
+                alert('Você concordou com os termos!');
+            } else {
+                alert('Você desmarcou os termos.');
+            }
+        });
+    </script>
+
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    var mensagemErro = /*[[${mensagemErro}]]*/ null;
+    var mensagemSucesso = /*[[${mensagemSucesso}]]*/ null;
+
+    if (mensagemErro) {
+        alert(mensagemErro);
+    }
+
+    if (mensagemSucesso) {
+        alert(mensagemSucesso);
+    }
+    /*]]>*/
+</script>
+
+</body>
+</html>
