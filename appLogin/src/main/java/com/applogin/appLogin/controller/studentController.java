@@ -53,4 +53,10 @@ public class studentController {
         return "mainscreen/mainScreenStudent";
     }
     
+    @PostMapping("/seematters")
+    
+    public String showmatters(){
+
+        return"";
+    }
 }

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presenças</title>
+    <link rel="stylesheet" href="/css/styleattendance.css">
+</head>
+<body>
+    <div class="presencas">
+        <h1 class="titulo">Presenças</h1>
+        <table class="presencatable">
+            <thead>
+                <tr>
+                    <th>Matéria</th>
+                    <th>Quantidade de Presenças</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="materia : ${materias}">
+                    <td th:text="${materia.nomeMateria}">Nome da Matéria</td> 
+                    <td th:text="${#lists.size(materia.presencasTrue)}">0</td> 
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <a class="backToMain" onclick="window.location.href='/mainStudent'">Voltar</a>
+</body>
+</html>

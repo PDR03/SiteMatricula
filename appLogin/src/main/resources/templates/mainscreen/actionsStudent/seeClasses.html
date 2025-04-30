@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>classes</title>
+    <link rel="stylesheet" href="/css/StyleseeClass.css">
+</head>
+<body>
+    <div class="head"><h1>Aulas</h1></div>
+    <div class="cardsAulas">
+        <!-- Corrigido o th:each e adicionada verificação se a lista está vazia -->
+        <div th:if="${aulas != null and !aulas.empty}">
+            <div class="card" th:each="aula : ${aulas}">
+                <!-- Adicionado safe navigation (?) e valor padrão -->
+                <h2 th:text="${aula?.materia?.nomeMateria} ?: 'Matéria não especificada'">Nome da Matéria</h2>
+                <p><strong>Horário:</strong> <span th:text="${aula.horario} ?: 'Não informado'"></span></p>
+                <!-- Adicionado verificação para sala -->
+                <p><strong>Sala:</strong> 
+                    <span th:text="${aula?.sala?.numDaSala} ?: 'Sala não atribuída'"></span>
+                </p>
+                <!-- Adicionado verificação para professor -->
+                <p><strong>Professor:</strong> 
+                    <span th:text="${aula?.professor?.nome} ?: 'Professor não atribuído'"></span>
+                </p>
+            </div>
+        </div>
+        <!-- Mensagem para quando não houver aulas -->
+        <div th:if="${aulas == null or aulas.empty}" class="no-classes">
+            <p>Nenhuma aula disponível no momento.</p>
+        </div>
+    </div>
+    <a class="backToMain" onclick="window.location.href = '/mainStudent'">Voltar</a>
+</body>
+</html>

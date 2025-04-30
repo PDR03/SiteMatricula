@@ -22,7 +22,11 @@
                     <tr th:each="matter : ${matters}">
                         <td th:text="${matter.id}"></td>
                         <td th:text="${matter.nomeMateria}"></td>
-                        <td th:text="${matter.sala}"></td>
+                        <td>
+                            <span th:each="room : ${matter.classrooms}"
+                                  th:text="${room.numDaSala} + ' '" >
+                            </span>
+                        </td> 
                     </tr>
                 </tbody>
             </table>

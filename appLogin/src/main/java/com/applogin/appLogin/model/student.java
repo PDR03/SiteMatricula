@@ -13,6 +13,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
@@ -55,9 +57,23 @@ public class student{
         joinColumns = @JoinColumn(name = "student_id"),
         inverseJoinColumns = @JoinColumn(name = "matter_id")
     )
-
     private List<matter> matters;
+    @ManyToMany
+    @JoinTable(
+        name = "aula_student",
+        joinColumns = @JoinColumn(name = "student_id"),
+        inverseJoinColumns = @JoinColumn(name = "aula_id")
+    )
+    private List<aula> aulas;
 
+
+    @OneToMany(mappedBy = "aluno")
+    private List<presenca> presencas;
+    
+    @ManyToOne
+    @JoinColumn(name = "periodo_id") // nome da FK no banco
+    private periodo periodo;
+    
     public long getId() {
         return id;
     }
@@ -118,5 +134,31 @@ public class student{
         this.matters = matters;
     }
 
+    public void setId(long id) {
+        this.id = id;
+    }
 
+    public List<aula> getAulas() {
+        return aulas;
+    }
+
+    public void setAulas(List<aula> aulas) {
+        this.aulas = aulas;
+    }
+
+    public List<presenca> getPresencas() {
+        return presencas;
+    }
+
+    public void setPresencas(List<presenca> presencas) {
+        this.presencas = presencas;
+    }
+
+    public periodo getPeriodo() {
+        return periodo;
+    }
+
+    public void setPeriodo(periodo periodo) {
+        this.periodo = periodo;
+    }
 }
